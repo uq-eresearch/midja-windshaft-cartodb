@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+# We shouldn't need this, but the node app seems to ignore the DB host in
+# some cases.
+exec 2>&1
+cd /tmp
+exec socat TCP-LISTEN:5432,bind=127.0.0.1,fork,reuseaddr TCP:midja.org:5432
